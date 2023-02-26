@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "pratos")
-public class Prato {
+public class Cardapio {
 
 
     @Id
@@ -19,8 +19,10 @@ public class Prato {
     @Column(name = "data_de_registro")
     private LocalDateTime dataDeRegistro = LocalDateTime.now();
 
+    private Categoria categoria;
 
-    public Prato() {
+
+    public Cardapio() {
     }
 
     public Integer getId() {
@@ -73,7 +75,7 @@ public class Prato {
 
     @Override
     public String toString() {
-        return "Prato{" +
+        return "Cardapio{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
