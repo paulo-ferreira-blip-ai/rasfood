@@ -23,17 +23,18 @@ public class CardapioService {
 
 
         EntityManager entityManager = JPAUtil.getEntityManagerRasFood();
-        CardapioController cardapioController = new CardapioController(entityManager);
-
-        //Parte CRUD
+        CardapioController cardapioController =new CardapioController(entityManager);
         entityManager.getTransaction().begin();
-        cardapioController.cadastrar(risoto);
-        cardapioController.cadastrar(salmão);
-        System.out.println("O Cardapio consultado foi: " + cardapioController.consultar(1));
 
-        cardapioController.excluir(risoto);
-        System.out.println("O Cardapio consultado foi: " + cardapioController.consultar(1));
-        entityManager.getTransaction().commit();
+
+        cardapioController.cadastrar(risoto);
+        entityManager.flush();
+        cardapioController.cadastrar(salmão);
+        entityManager.flush();
+
+        System.out.printf("Lista de produtos por nome: " + cardapioController.consultarPorNome("salmão"));
+//        cardapioController.consultarTodos().forEach(elemento-> System.out.println("O prato consultado foi: " + elemento));
+
         entityManager.close();
 
     }
