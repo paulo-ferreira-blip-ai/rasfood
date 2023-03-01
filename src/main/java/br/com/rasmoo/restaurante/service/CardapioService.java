@@ -23,7 +23,7 @@ public class CardapioService {
 
 
         EntityManager entityManager = JPAUtil.getEntityManagerRasFood();
-        CardapioController cardapioController =new CardapioController(entityManager);
+        CardapioController cardapioController = new CardapioController(entityManager);
         entityManager.getTransaction().begin();
 
 
